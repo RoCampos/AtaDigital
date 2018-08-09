@@ -23,18 +23,17 @@ Route::get('/',
 //     return view ('index');
 // });
 
-#registro de rotas para controlador Professor
-Route::get('/professor/',
-	'ProfessorController@pagina_inicial');
-
-Route::get('/professor/adicionar',
-	'ProfessorController@criar')->name('adicionar');
-
-Route::post('/professor/salvar',
-	'ProfessorController@armazenar')->name('salvar');
-
-Route::get('/professor/mostrar/{id}',
-	'ProfessorController@mostrar')->name ('mostrar');
+Route::resource('professor', 'ProfessorController',[ 
+	'names' => [
+		'index' => 'professor.inicio',
+		'create'=> 'professor.criar',
+		'store' => 'professor.salvar',
+		'show' => 'professor.mostrar',
+		'update'=> 'professor.atualizar',
+		'destroy'=> 'professor.remover',
+		'edit' => 'professor.editar'
+	]
+]);
 
 
 Route::get('/atas/', function() {

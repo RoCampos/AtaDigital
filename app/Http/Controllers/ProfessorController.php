@@ -13,22 +13,19 @@ class ProfessorController extends Controller
 {
     
 	///criar as funções
-	function pagina_inicial () {
+	function index () {
 
 		$professors = Professor::all ();
-
 		$prof2 = DB::select('select * from professors');
-		var_dump($prof2[0]);
-
 		return view ('professors.index', ['professors' => $professors]);
 	}
 
-	function criar()
+	function create()
 	{
 		return view ('professors.criar');
 	}
 
-	function armazenar()
+	function store()
 	{
 		
 		#usando Facade
@@ -40,20 +37,17 @@ class ProfessorController extends Controller
 		// from Model
 		$prof->save ();
 
-		// DB::insert('insert into professors (nome, formacao, titulacao, email) 
-			// values (?, ?, ?, ?)', [$prof->nome, $prof->formacao, $prof->titulacao, $prof->email]);
-
-		return redirect()->to ('/');
+		return redirect()->to (route('professor.inicio'));
 
 	}
 
-	function mostrar($id)
+	function show($id)
 	{
 		$prof = Professor::findOrFail ($id);
 		return view('professors.mostrar', ['prof'=> $prof]);	
 	}
 
-	function remover($id)
+	function destroy($id)
 	{
 		
 	}

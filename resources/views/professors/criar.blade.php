@@ -5,7 +5,7 @@
 </head>
 <body>
 
-	<form action="{{route('salvar')}}" method="POST">
+	<form action="{{route('professor.salvar')}}" method="POST">
 		{{csrf_field()}}
 
 		<label>Nome</label>	
