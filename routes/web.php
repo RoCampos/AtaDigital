@@ -17,7 +17,7 @@ use App\Ata;
 
 
 Route::get('/',
-	'ProfessorController@pagina_inicial');
+	'ProfessorController@index');
 
 // Route::get('/', function() {
 //     return view ('index');
