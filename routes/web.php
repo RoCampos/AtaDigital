@@ -19,9 +19,9 @@ use App\Ata;
 Route::get('/',
 	'ProfessorController@index');
 
-// Route::get('/', function() {
-//     return view ('index');
-// });
+Route::get('/boot', function() {
+    return view ('index');
+});
 
 Route::resource('professor', 'ProfessorController',[ 
 	'names' => [
