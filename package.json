@@ -22,6 +22,7 @@
     "dependencies": {
         "datatables.net": "^1.10.19",
         "gulp": "^3.9.1",
+        "startbootstrap-sb-admin": "^5.0.1",
         "vue-template-compiler": "^2.5.17"
     }
 }

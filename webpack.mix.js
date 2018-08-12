@@ -22,10 +22,6 @@ mix.copyDirectory ('node_modules/startbootstrap-sb-admin-2/vendor',
 mix.copyDirectory ('node_modules/startbootstrap-sb-admin-2/vendor',
 	'public/vendor',false);
 
-mix.copyDirectory ('node_modules/startbootstrap-sb-admin-2/vendor',
-	'public/teste',false).
-	extract(['vue']);
-
 mix.sourceMaps();
 
 // datatables
