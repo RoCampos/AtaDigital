@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEncaminhamentosTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateEncaminhamentosTable extends Migration
      */
     public function up()
     {
-        Schema::create('encaminhamentos', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('assunto');
-            $table->string('tarefa');
-            $table->unsignedInteger('id_ata');
-
-            $table->foreign('id_ata')
-                ->references('id')
-                ->on('atas');
+            $table->string('nome');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 
@@ -32,6 +30,6 @@ class CreateEncaminhamentosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('encaminhamentos');
+        Schema::dropIfExists('users');
     }
 }
