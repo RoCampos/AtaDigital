@@ -6,10 +6,29 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aluno extends Model
 {
-    //
-	public function atas()
+
+	/**
+	 * Aluno has one Projeto.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
+	public function projeto()
 	{
-		return $this->hasMany('App\Ata');
+		// hasOne(RelatedModel, foreignKeyOnRelatedModel = aluno_id, localKey = id)
+		return $this->hasOne(Projeto::class, 'id');
+	}
+
+	/**
+	 * Aluno belongs to Encaminhamentos.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function encaminhamentos()
+	{
+		// belongsTo(RelatedModel, foreignKey = encaminhamentos_id, keyOnRelatedModel = id)
+		return $this->belongsToMany(
+			Encaminhamento::class, 
+			$table = 'alunos_encaminhamentos');
 	}
 
 }
