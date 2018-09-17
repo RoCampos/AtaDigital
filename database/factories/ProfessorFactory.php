@@ -18,6 +18,8 @@ $factory->define(App\Professor::class, function (Faker $faker) {
 	];
 
 	$user = factory(App\User::class)->create();
+	$user->type = 'professor';
+	$user->save();
     return [
     	'id' => $user,
         'formacao' => $formacao[rand(0,3)],

@@ -18,8 +18,6 @@ class CreateProfessorsTable extends Migration
                 ->unsigned();
             $table->string('formacao');
             $table->string('titulacao');
-            $table->timestamps();
-
             $table->primary ('id');
             
             $table->foreign ('id')
