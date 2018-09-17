@@ -35,7 +35,7 @@ class User extends Authenticatable
     public function professor()
     {
         // hasOne(RelatedModel, foreignKeyOnRelatedModel = user_id, localKey = id)
-        return $this->hasOne(Professor::class);
+        return $this->hasOne(Professor::class, 'id');
     }
 
     /**

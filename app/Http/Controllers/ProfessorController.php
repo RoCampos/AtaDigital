@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\facades\Input;
 use App\Professor;
+use App\User;
 
 use DB;
 
@@ -14,10 +15,15 @@ class ProfessorController extends Controller
     
 	///criar as funções
 	function index () {
+		
+		$id = Input::get('id');
+		$user = User::get()
+			->where('id',$id)
+			->first();
 
-		$professors = Professor::all ();
-		$prof2 = DB::select('select * from professors');
-		return view ('professors.index', ['professors' => $professors]);
+		return view ('professors.index', [
+			'user' => $user
+		]);
 	}
 
 	function create()

@@ -1,25 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+@extends('layouts.main')
+
+@section('titulo-pagina')
+	Página Inicial
+@endsection
+
+@section('nome-usuario-nav')
+	{{$user->nome}}
+@endsection
+
+@section('nome-usuario-side')
+	{{$user->nome}}
+@endsection
+
+@section('novo-projeto')
+	@if ($user->type == "professor")
+		<button class="btn btn-success btn-block">Novo Projeto
+                <i class="mdi mdi-plus"></i>
+        </button>
+	@endif
+@endsection
+
+@section('tipo-usuario-side')
+	{{$user->type}}
+@endsection
 
 
-	<h1>Pagina Inicial</h1>
+@section('content')
+	<div class="container">
+		<div class="row">
+			<div class="card-header">Here</div>
+                <div class="card-body">
+                    <a href="{{route('logout')}}">
+                    	
+                    </a>
+                </div>
+		</div>
 
-	{{-- BLADE CONSTRUCTION --}}
-	@foreach ($professors as $professor)
-		
-		<label>Nome:</label> 
-		<a href="{{route('professor.mostrar',[$professor['id']])}}">
-			{{ $professor['nome'] }}
-		</a>
-		<br>
+	</div>
 
-	@endforeach
-
-	<a href="{{route ('professor.criar')}}">Novo Professor</a>
-
-</body>
-</html>
+@endsection
