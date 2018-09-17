@@ -17,13 +17,10 @@ $factory->define(App\Professor::class, function (Faker $faker) {
 		'doutorado'
 	];
 
+	$user = factory(App\User::class)->create();
     return [
-        'nome' => $faker->name,
+    	'id' => $user,
         'formacao' => $formacao[rand(0,3)],
-        'titulacao' => $titulacao[rand(0,2)],
-        'email' => $faker->email,
-        'created_at' => $faker->dateTime,
-        'updated_at' => $faker->dateTime,
-
+        'titulacao' => $titulacao[rand(0,2)]
     ];
 });
