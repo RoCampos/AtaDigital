@@ -47,14 +47,10 @@ class LoginController extends Controller
             if (isset($user)) {
 
                 if ($user->type == "professor") {
-
-
-                    // $this->redirectTo = route('professor.inicio', 
-                    //         ['id' => $user->id]);
-
                     return redirect()->to(
                         route('professor.inicio', 
                             ['id' => $user->id]));
+
                 }else if($user->type == "aluno"){
                     return redirect()->to(
                         route('aluno.inicio', 
@@ -71,7 +67,6 @@ class LoginController extends Controller
     {
         Auth::logout();
         $request->session()->flush();
-        // return redirect()->to('login');
         return redirect(\URL::previous());
     }
 

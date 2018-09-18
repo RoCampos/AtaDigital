@@ -183,7 +183,7 @@
               <a class="dropdown-item">
                 <form action="{{route('logout')}}" method="POST">
                   @csrf
-                  <button>sair</button>
+                  <button type="submit">sair</button>
                 </form>
               </a>
             </div>
