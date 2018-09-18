@@ -13,9 +13,13 @@ class AlunoSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 20; $i++) {
+        
+        for ($i = 0; $i < 30; $i++) {
+            $user = factory(App\User::class)->create();
+            $user->type = 'aluno';
+            $user->save ();
             DB::table('alunos')->insert([
-                'nome' => str_random(15),
+                'id' => $user->id,
                 'matricula' => str_random(11)
             ]);    
         }

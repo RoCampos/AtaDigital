@@ -1,5 +1,7 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/js/sb-admin-2.js": "/js/sb-admin-2.js"
+    "/css/style.css": "/css/style.css",
+    "/images/favicon.png": "/images/favicon.png",
+    "/js/off-canvas.js": "/js/off-canvas.js",
+    "/js/misc.js": "/js/misc.js",
+    "/js/dashboard.js": "/js/dashboard.js"
 }

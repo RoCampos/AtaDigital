@@ -8,6 +8,13 @@ class Aluno extends Model
 {
 
 	/**
+	 * Indicates if the model should be timestamped.
+	 *
+	 * @var boolean
+	 */
+	public $timestamps = false;
+
+	/**
 	 * Aluno has one Projeto.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -29,6 +36,16 @@ class Aluno extends Model
 		return $this->belongsToMany(
 			Encaminhamento::class, 
 			$table = 'alunos_encaminhamentos');
+	}
+
+	/**
+	 * Aluno belongs to User.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function user()
+	{
+		return $this->belongsTo(User::class);
 	}
 
 }

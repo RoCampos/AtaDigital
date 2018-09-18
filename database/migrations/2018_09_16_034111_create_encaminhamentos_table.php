@@ -17,7 +17,11 @@ class CreateEncaminhamentosTable extends Migration
             $table->increments('id');
             $table->string('assunto');
             $table->string('tarefa');
+            $table->unsignedInteger('id_ata');
 
+            $table->foreign('id_ata')
+                ->references('id')
+                ->on('atas');
         });
     }
 
