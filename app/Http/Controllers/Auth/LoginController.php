@@ -24,13 +24,7 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = 'login';
-
+    
     /**
      * Create a new controller instance.
      *
@@ -44,7 +38,6 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credenciais = $request->only('email','password');
-        // return $credenciais;
         if (Auth::attempt ($credenciais)) {
 
             $user = User::get()
@@ -53,13 +46,19 @@ class LoginController extends Controller
 
             if (isset($user)) {
 
-                if ($user->type == "professor")
+                if ($user->type == "professor") {
+
+
+                    // $this->redirectTo = route('professor.inicio', 
+                    //         ['id' => $user->id]);
+
                     return redirect()->to(
                         route('professor.inicio', 
                             ['id' => $user->id]));
-                else {
-                    
-                    return redirect()->to('login');
+                }else if($user->type == "aluno"){
+                    return redirect()->to(
+                        route('aluno.inicio', 
+                            ['id' => $user->id]));
                 }
             }
 
@@ -68,10 +67,12 @@ class LoginController extends Controller
         }
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
-        return redirect()->to('login');
+        $request->session()->flush();
+        // return redirect()->to('login');
+        return redirect(\URL::previous());
     }
 
 }

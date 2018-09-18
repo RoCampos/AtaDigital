@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\facades\Input;
 use App\Professor;
+use App\Projeto;
 use App\User;
 
 use DB;
@@ -13,16 +14,30 @@ use DB;
 class ProfessorController extends Controller
 {
     
+	public function __construct() {
+		$this->middleware ('auth');
+	}
+
 	///criar as funções
 	function index () {
-		
+
 		$id = Input::get('id');
+
+		abort_if(auth()->id() !=$id, 
+			403, 
+			$message = 'Usuário Não Autorizao', 
+			$headers = []);
+
 		$user = User::get()
 			->where('id',$id)
 			->first();
 
+		$projetos = Projeto::get()
+			->where('id_prof', $user->id);
+
 		return view ('professors.index', [
-			'user' => $user
+			'user' => $user,
+			'projetos' => $projetos
 		]);
 	}
 
@@ -49,6 +64,7 @@ class ProfessorController extends Controller
 
 	function show($id)
 	{
+
 		$prof = Professor::findOrFail ($id);
 		return view('professors.mostrar', ['prof'=> $prof]);	
 	}
