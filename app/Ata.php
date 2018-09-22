@@ -15,7 +15,10 @@ class Ata extends Model
 
     public function professor()
     {
-		return $this->hasOne('App\Professor', 'id');    	
+		return $this->belongsTo(
+            Professor::class,
+            'id_prof'
+        );
     }
 
     /**
@@ -26,7 +29,10 @@ class Ata extends Model
     public function projeto()
     {
     	// hasOne(RelatedModel, foreignKeyOnRelatedModel = ata_id, localKey = id)
-    	return $this->hasOne(Projeto::class, 'id');
+    	return $this->belongsTo(
+            Projeto::class,
+            'id_proj'
+        );
     }
 
     /**
@@ -36,7 +42,9 @@ class Ata extends Model
      */
     public function encaminhamentos()
     {
-        return $this->hasMany(Encaminhamento::class);
+        return $this->hasMany(
+            Encaminhamento::class,
+            'id_ata');
     }
 
 }

@@ -17,8 +17,15 @@ class CreateAlunosTable extends Migration
             $table->integer('id')
                 ->unsigned ();
             $table->string('matricula');
+            $table->integer('id_proj')
+                ->unsigned ()
+                ->nullable ();
 
             $table->primary ('id');
+
+            $table->foreign ('id_proj')
+                ->references ('id')
+                ->on ('projetos');
 
             $table->foreign('id')
                 ->references('id')

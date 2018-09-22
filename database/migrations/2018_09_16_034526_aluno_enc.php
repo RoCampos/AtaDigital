@@ -16,7 +16,6 @@ class AlunoEnc extends Migration
         Schema::create('alunos_encaminhamentos', function (Blueprint $table) {
             
             $table->unsignedInteger('aluno_id');
-                
             $table->unsignedInteger('encaminhamento_id');
 
             $table->primary (['aluno_id', 'encaminhamento_id']);

@@ -18,9 +18,15 @@ class AlunoSeeder extends Seeder
             $user = factory(App\User::class)->create();
             $user->type = 'aluno';
             $user->save ();
+
+            $c = App\Projeto::count();
+            $projeto = App\Projeto::find(rand(1, $c));
+                
+
             DB::table('alunos')->insert([
                 'id' => $user->id,
-                'matricula' => str_random(11)
+                'matricula' => str_random(11),
+                'id_proj' => $projeto->id
             ]);    
         }
         

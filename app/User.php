@@ -46,6 +46,6 @@ class User extends Authenticatable
     public function aluno()
     {
         // hasOne(RelatedModel, foreignKeyOnRelatedModel = user_id, localKey = id)
-        return $this->hasOne(Aluno::class);
+        return $this->hasOne(Aluno::class, 'id');
     }
 }
