@@ -21,7 +21,10 @@ class Encaminhamento extends Model
      */
     public function ata()
     {
-    	return $this->hasOne(Ata::class, 'id');
+    	return $this->belongsTo(
+            Ata::class,
+            'id_ata'
+        );
     }
 
     /**

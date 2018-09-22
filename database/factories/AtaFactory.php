@@ -3,11 +3,11 @@
 use Faker\Generator as Faker;
 
 $factory->define(App\Ata::class, function (Faker $faker) {
-    $tempo = $faker->dateTime;
+    $tempo = $faker->date;
     return [
     	
     	'assunto' => $faker->sentence(4, true),
-    	'relatorio' => $faker->text(100),
+    	'relatorio' => $faker->realText(100),
     	'id_prof' => function(){
     		$count = App\Professor::get()->count();
     		return App\Professor::find(rand(1, $count));

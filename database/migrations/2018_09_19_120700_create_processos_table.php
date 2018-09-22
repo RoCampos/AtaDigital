@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjetosTable extends Migration
+class CreateProcessosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateProjetosTable extends Migration
      */
     public function up()
     {
-        Schema::create('projetos', function (Blueprint $table) {
+        Schema::create('processos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
-            $table->unsignedInteger('id_prof')
+            $table->string('assunto');
+            $table->string('relatorio');
+            $table->unsignedInteger('id_tec')
                 ->nullable();
 
-            $table->foreign('id_prof')
+            $table->foreign('id_tec')
                 ->references('id')
-                ->on('professors');
-
-            $table->timestamps();
+                ->on('tecnicos');
         });
     }
 
@@ -34,6 +33,6 @@ class CreateProjetosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('projetos');
+        Schema::dropIfExists('processos');
     }
 }

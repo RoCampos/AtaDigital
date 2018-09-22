@@ -14,14 +14,17 @@ class Professor extends Model
      */
     public $timestamps = false;
 
+
     /**
-     * Professor has many Projetos.
+     * Professor has many
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function projetos()
     {
-    	return $this->hasMany(Projeto::class);
+        return $this->hasMany(
+            Projeto::class, 
+            'id_prof');
     }
 
     /**
@@ -31,7 +34,9 @@ class Professor extends Model
      */
     public function atas()
     {   	
-    	return $this->hasMany(Ata::class);
+    	return $this->hasMany(
+            Ata::class, 
+            'id_prof');
     }
 
     /**
@@ -41,6 +46,9 @@ class Professor extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(
+            User::class,
+            'id'
+        );
     }
 }

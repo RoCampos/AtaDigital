@@ -22,7 +22,10 @@ class Aluno extends Model
 	public function projeto()
 	{
 		// hasOne(RelatedModel, foreignKeyOnRelatedModel = aluno_id, localKey = id)
-		return $this->hasOne(Projeto::class, 'id');
+		return $this->belongsTo(
+			Projeto::class,
+			'id_proj'
+		);
 	}
 
 	/**
@@ -45,7 +48,10 @@ class Aluno extends Model
 	 */
 	public function user()
 	{
-		return $this->belongsTo(User::class);
+		return $this->belongsTo(
+			User::class,
+			'id'
+		);
 	}
 
 }
