@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Adicionar Professor</title>
-</head>
-<body>
+@extends('layouts.index')
 
-	<form action="{{route('salvar')}}" method="POST">
+@section('professor-content')
+	
+	<form action="{{route('professor.salvar')}}" method="POST">
 		{{csrf_field()}}
 
 		<label>Nome</label>	
@@ -24,5 +21,5 @@
 
 	</form>
 
-</body>
-</html>
+@endsection
+

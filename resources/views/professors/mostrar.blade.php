@@ -14,7 +14,7 @@
 	<label>Titulação: {{$prof['titulacao']}} </label>
 	<br>
 
-	<a href="{{url('/')}}">voltar</a>
+	<a href="{{route('professor.inicio')}}">voltar</a>
 	
 
 </body>
