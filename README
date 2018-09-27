@@ -1,6 +1,0 @@
-php artisan make:controller ProfessorController
-
-# criar model já fazendo migracao
-php artisan make:model Professor --migration
-
-php artisan migrate
